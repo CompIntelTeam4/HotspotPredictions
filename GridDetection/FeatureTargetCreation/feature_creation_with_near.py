@@ -1,9 +1,9 @@
 import pandas as pd 
 
-grid = pd.read_csv("Grid_with_neighbors.csv")
+grid = pd.read_csv("C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_Prediction\\Data\\Crime_Data\\Grid_with_neighbors.csv")
 
 #Enter the file name you want to use to create the feature set
-crime = pd.read_csv("assault_crime_data_2016_wGrid.csv")
+crime = pd.read_csv("C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_Prediction\\Data\\Crime_Data\\assult_crime_data_2017_wGrid.csv")
 
 #Initialize the output dataframe
 output = pd.DataFrame(columns=['Grid','Hotspot', 'week', 'month','year','near'])
@@ -53,7 +53,7 @@ for grid_index, grid_row in grid.iterrows():
             near +=1
         if grid_row['bottomright'] == crime_row['grid']:
             near +=1
-        if month==1 and grid_row['bottomleft'] == crime_row['grid']:
+        if grid_row['bottomleft'] == crime_row['grid']:
             near +=1
         
         if month == 12 and grid_row['id'] == crime_row['grid']:
@@ -71,4 +71,4 @@ for grid_index, grid_row in grid.iterrows():
     countWeek = 0
 
 #Output the file to the CSV
-output.to_csv("crime_tallys_2016.csv",index=False,encoding='utf8')
+output.to_csv("C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_Prediction\\Data\\Crime_Data\\crime_tallys_2016_withNear.csv",index=False,encoding='utf8')
