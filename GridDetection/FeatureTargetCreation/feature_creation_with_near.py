@@ -71,4 +71,4 @@ for grid_index, grid_row in grid.iterrows():
     countWeek = 0
 
 #Output the file to the CSV
-output.to_csv("C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_Prediction\\Data\\Crime_Data\\crime_tallys_2016_withNear.csv",index=False,encoding='utf8')
+output.to_csv("C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_Prediction\\Data\\Crime_Data\\crime_tallys_2017_withNear.csv",index=False,encoding='utf8')
