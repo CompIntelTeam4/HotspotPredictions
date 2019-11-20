@@ -27,7 +27,7 @@
 
 
 <?php 
-    $string = file_get_contents("testGEO.json");
+    $string = file_get_contents("KNN_GEO.json");
 ?>
 
 <!DOCTYPE html>

@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as numpy
 from sklearn import tree
 from sklearn.metrics import accuracy_score, adjusted_rand_score
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 import time
 
@@ -30,20 +31,20 @@ X_test = test
 #1505 have actual values
 #O index is the index of the 1st grid
 
-#Decision Tree Classifier
-decision_tree = tree.DecisionTreeClassifier(criterion="entropy")
+#KNearestNeighbors Tree Classifier
+KNN = KNeighborsClassifier(n_neighbors=2)
 
 
 
 start = time.time()*1000
-decision_tree = decision_tree.fit(X_train,Y_train)
+KNN = KNN.fit(X_train,Y_train)
 end = time.time()*1000
 
-print("Training time for decision tree: ", end-start)
-dt_prediction = decision_tree.predict(X_test)
+print("Training time for KNearest Neighbors: ", end-start)
+KNN_prediction = KNN.predict(X_test)
 #Compute the accuracy by comparing the actual values to the prediction values
-score = accuracy_score(Y_test,dt_prediction)
-score2 = accuracy_score(Y_test,dt_prediction, normalize=False)
+score = accuracy_score(Y_test,KNN_prediction)
+score2 = accuracy_score(Y_test,KNN_prediction, normalize=False)
 print("Accuracy: ", score)
 print("Misses: ", len(Y_test)-score2)
 
@@ -55,14 +56,14 @@ print("Misses: ", len(Y_test)-score2)
 
 
 
-pred_series = pd.Series(dt_prediction, index=Y_test.index, name="predictions")
+pred_series = pd.Series(KNN_prediction, index=Y_test.index, name="predictions")
 
 final_output = pd.concat([Y_test,pred_series],axis=1)
 final_output.insert(0,'Grid',range(1,1+len(final_output)))
 #print(final_output)
 
 
-final_output.to_csv("C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_prediction\\Data\\Crime_data\\Results\\DSTinitial2017Test.csv",index=False,encoding='utf8')
+final_output.to_csv("C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_prediction\\Data\\Crime_data\\Results\\KNNinitial2017Test.csv",index=False,encoding='utf8')
 
 #Need to add the index as a column for the output and increase by one to get the actual grid
 
