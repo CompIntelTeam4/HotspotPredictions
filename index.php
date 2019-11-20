@@ -27,7 +27,7 @@
 
 
 <?php 
-    $string = file_get_contents("testGEO.json");
+    $string = file_get_contents("./CrimeWebsite/testGEO.json");
 ?>
 
 <!DOCTYPE html>
