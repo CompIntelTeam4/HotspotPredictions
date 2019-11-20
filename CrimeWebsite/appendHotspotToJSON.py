@@ -14,7 +14,7 @@ print(json_decoded['data']['features'][0]['hotspot'])
 #3445 grids total
 
 for i in range(len(json_decoded['data']['features'])):
-    print(i+1,end='')
+    print(i,end='')
 
 #with open(json_file, 'w') as json_file:
     #json.dump(json_decoded, json_file)
