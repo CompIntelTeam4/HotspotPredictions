@@ -24,7 +24,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibG11cmRvY2sxMiIsImEiOiJjazJ1d2NobHIwM3ZzM2J0Z
 var map = new mapboxgl.Map({
 container: "map",
 style: "mapbox://styles/mapbox/streets-v11",
-center: [-86.403732, 36],
+center: [-86.403732, 36.1627],
 zoom: 10
 });
  
@@ -32,7 +32,7 @@ map.on("load", function() {
     map.addSource("grid_cords", <?php echo $string ?>);
  
 map.addLayer({
-"id": "grid_filled",
+"id": "gridPredictedHotspots",
 "type": "fill",//"fill",
 "source": "grid_cords",
 "paint": {
@@ -40,6 +40,17 @@ map.addLayer({
 "fill-opacity": 0.25
 },
 "filter": ["==", "PredictHot",1]
+});
+
+map.addLayer({
+"id": "gridActualHotspots",
+"type": "fill",//"fill",
+"source": "grid_cords",
+"paint": {
+"fill-color": "#0000FF",
+"fill-opacity": 0.25
+},
+"filter": ["==", "ActualHot",1]
 });
  
 map.addLayer({
