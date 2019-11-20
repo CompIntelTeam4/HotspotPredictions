@@ -1,6 +1,6 @@
 
 <?php 
-    $string = file_get_contents("geojsonTest.json");
+    $string = file_get_contents("testGEO.json");
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ map.addLayer({
 "fill-color": "#FF0000",
 "fill-opacity": 0.25
 },
-"filter": [">", "id",1500]
+"filter": ["==", "PredictHot",1]
 });
  
 map.addLayer({
