@@ -43,14 +43,14 @@ map.addLayer({
 });
 
 map.addLayer({
-"id": "gridActualHotspots",
+"id": "gridCombinedHotspots",
 "type": "fill",//"fill",
 "source": "grid_cords",
 "paint": {
-"fill-color": "#0000FF",
+"fill-color": "#00FF00",
 "fill-opacity": 0.25
 },
-"filter": ["==", "ActualHot",1]
+"filter":['all', ["==", "ActualHot",1],['==','PredictHot',1]]
 });
  
 map.addLayer({
