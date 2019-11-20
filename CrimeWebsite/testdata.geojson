@@ -1,0 +1,90 @@
+{
+  "type": "FeatureCollection",
+  "name": "geo_test",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::3857"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "left": -9691591,
+        "top": 4308095,
+        "right": -9690791,
+        "bottom": 4307295
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+
+              [
+                -9691591,
+                4308095
+              ],
+              [
+                -9690791,
+                4308095
+              ],
+              [
+                -9690791,
+                4307295
+              ],
+              [
+                -9691591,
+                4307295
+              ],
+              [
+                -9691591,
+                4308095
+              ]
+
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3445,
+        "left": -9631591,
+        "top": 4311295,
+        "right": -9630791,
+        "bottom": 4310495
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            
+              [
+                -9631591,
+                4311295
+              ],
+              [
+                -9630791,
+                4311295
+              ],
+              [
+                -9630791,
+                4310495
+              ],
+              [
+                -9631591,
+                4310495
+              ],
+              [
+                -9631591,
+                4311295
+              ]
+            
+          ]
+        ]
+      }
+    }
+  ]
+}
