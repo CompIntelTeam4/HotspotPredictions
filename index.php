@@ -1,121 +1,118 @@
+<?php
 
-<?php 
 
-    //TEST PHP CODE FOR RUNNING PYTHON IN PHP AND SCRIPTING
+//Azure database credentials
+$servername = "crimewebsitedatabase.mysql.database.azure.com";
+$username = "lmurdock12";
+$password = "TheCloudtest2019";
+$myDB = "crimes";
+//Make connection instance
+$connection = mysqli_init();
+if(!$connection) {
+    die("mysqli_init_failed");
+}
+//Esatablish SSL with the connection instance
+$ssl_ca = 'C:\xampp\phpMyAdmin\ssl\BaltimoreCyberTrustRoot.crt.pem';
+mysqli_ssl_set($connection,null,null,$ssl_ca,null,null);
 
-    /*
-    //Executing python file in php
-    echo "h <br>";
-    #$python = shell_exec('"C:\Users\Lucian Murdock\AppData\Local\Programs\Python\Python37\python.exe" test.py 2>&1');
-    $python = shell_exec('"D:\Python34\python.exe" test.py 2>&1');
-    $python_result = json_decode($python);
-    foreach ($python_result as $item) {
-        echo $item."<BR>";
+//Make the actual connection
+if(!mysqli_real_connect($connection,$servername,$username,$password,$myDB)) {
+    //Stop and report error if connection uncesseful 
+    die("Connect error: " . mysqli_connect_error());
+}
+echo "Connection Successful";
+
+
+/*
+$incident_num = '8_11';
+$lat = 36.2;
+$long = -86.0;
+$grid = 3500;
+
+
+
+
+echo $incident_num . ", Lat: " . $lat . ", Long: " . $long . ", grid #: " . $grid . "<br>";
+
+//parse the date into an array by / to get the values out
+
+
+//Proper Format YYYY-MM-DD HH:MM-SS
+
+$dateFormatted = '2013' . "-" . '11' . "-" . '14' . " " . '00:00' . ":00";
+
+
+
+$sql = "INSERT INTO `incidents` (`primary_key`,`incident_occured`,`latitude`,`longitude`,`grid` ) VALUES ('$incident_num','$dateFormatted','$lat','$long','$grid');";
+
+if ($connection->query($sql) === TRUE) {
+    echo "Record created successfully<br>";
+} else {
+    echo "Error: " . $sql . "<br>" . $connection->error;
+}*/
+
+
+
+
+$row = 1;
+if (($handle = fopen("assult_crime_data_2018_wGrid.csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+
+        //Skip over the header row
+        if ($row == 1) {
+            $row++;
+            continue;
+        }
+
+        //Print the number of columns of data for each row
+        //$num = count($data);
+        echo "On row: " . $row . ", ";
+        $row++;
+
+        //Incident occured is stored in column 7 (using 0 as starting index)
+        //echo $data[7] . "<br>";
+
+
+        $incident_num = $data[0];
+        //28 29 31
+        $lat = $data[28];
+        $long = $data[29];
+        $grid = $data[31];
+
+
+
+
+        //echo $incident_num . ", Lat: " . $lat . ", Long: " . $long . ", grid #: " . $grid . "<br>";
+
+        //parse the date into an array by / to get the values out
+        $date = explode("/",$data[7]);
+
+        //Get the month and day
+        $month = $date[0];
+        $day = $date[1];
+        //Parse the date again to split up the year and time by " "
+        $date = explode(" ",$date[2]);
+        $year = $date[0];
+        $time = $date[1];
+
+        //Proper Format YYYY-MM-DD HH:MM-SS
+
+        $dateFormatted = $year . "-" . $month . "-" . $day . " " . $time . ":00";
+        //echo "Proper format: " . $dateFormatted . "<br>";
+        
+        $sql = "INSERT INTO `incidents` (`primary_key`,`incident_occured`,`latitude`,`longitude`,`grid`,`offense_type` ) VALUES ('$incident_num','$dateFormatted','$lat','$long','$grid','assault');";
+
+        if ($connection->query($sql) === TRUE) {
+            echo "Record created successfully<br>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $connection->error;
+        }
+
+        //echo $month . " + " . $day . " + " . $year . "<br>";
+
+
+
     }
-    echo "<br> end"
-    */
-
-    /*
-    $string = file_get_contents("shortGeo.json");
-    $string_decode = json_decode($string,true);
-    //echo $string;
-    echo $string_decode['data']['features'][0]['geometry']['type'];
-
-    */
-
+    fclose($handle);
+}
 ?>
-
-
-<?php 
-    $string = file_get_contents("KNN_GEO.json");
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset='utf-8' />
-<title>Crime Predictions</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
-<style>
-body { margin:0; padding:0; }
-#map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
-</head>
-<body>
- 
-<div id="map"></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoibG11cmRvY2sxMiIsImEiOiJjazJ1d2NobHIwM3ZzM2J0ZjdicTRhN3hjIn0.M3xbhDRz12zcYBnCDZPBnA';
-var map = new mapboxgl.Map({
-container: "map",
-style: "mapbox://styles/mapbox/streets-v11",
-center: [-86.403732, 36.1627],
-zoom: 10
-});
- 
-map.on("load", function() {
-    map.addSource("grid_cords", <?php echo $string ?>);
- 
-map.addLayer({
-"id": "gridPredictedHotspots",
-"type": "fill",//"fill",
-"source": "grid_cords",
-"paint": {
-"fill-color": "#FF0000",
-"fill-opacity": 0.25
-},
-"filter": ["==", "PredictHot",1]
-});
-map.addLayer({
-"id": "gridActualHotspots",
-"type": "fill",//"fill",
-"source": "grid_cords",
-"paint": {
-"fill-color": "#0000FF",
-"fill-opacity": 0.25
-},
-"filter": ["==", "ActualHot",1]
-});
-
-map.addLayer({
-"id": "gridCombinedHotspots",
-"type": "fill",//"fill",
-"source": "grid_cords",
-"paint": {
-"fill-color": "#00FF00",
-"fill-opacity": 0.50
-},
-"filter":['all', ["==", "ActualHot",1],['==','PredictHot',1]]
-});
- 
-map.addLayer({
-"id": "grid_unfilled",
-"type": "line",//"fill",
-"source": "grid_cords",
-"paint": {
-"line-color": "#FF0000",
-"line-width":.5,
-//"fill-opacity": 0.5
-"line-opacity":.5
-},
-//"filter": ["<=", "id",1500]
-});
-//map.getSource("grid_cords")["_data"]['features'][0]['properties']['id'].toString()
-//map.setFilter(map.getSource("grid_cords"),[">","id",1500])
-console.log(map.getSource("grid"))
-
-
-
-
-//on load end mark
-});
-
-//console.log(map.isSourceLoaded("grid"))
-</script>
-
-
-</body>
-</html>
-
