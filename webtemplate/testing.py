@@ -1,10 +1,13 @@
-#!/usr/bin/env python
-
-f = open("demofile2.txt", "a")
-f.write("Now the file has more content!")
-f.close()
+import json
+import sys
 
 
-#open and read the file after the appending:
-f = open("demofile2.txt", "r")
-print(f.read())
+def hello():
+    dic = ['1','2','3']
+    return json.dumps(dic)
+
+
+if __name__ == "__main__":
+    print(hello())
+
+
