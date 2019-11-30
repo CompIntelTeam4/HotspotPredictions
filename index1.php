@@ -68,6 +68,8 @@ map.addLayer({
 },
 "filter": ["==", "PredictHot",1]
 });
+
+/*
 map.addLayer({
 "id": "gridActualHotspots",
 "type": "fill",//"fill",
@@ -77,7 +79,7 @@ map.addLayer({
 "fill-opacity": 0.25
 },
 "filter": ["==", "ActualHot",1]
-});
+});*/
 
 map.addLayer({
 "id": "gridCombinedHotspots",
