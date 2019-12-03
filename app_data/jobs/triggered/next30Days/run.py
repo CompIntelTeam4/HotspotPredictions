@@ -118,9 +118,11 @@ print(df)
 print("Creating the featureset...")
 logging.info("Creating the featureset...")
 
+
+tempTally = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\tempTallys\\crimeTallys_" + yesterday + ".csv"
 #Create and return the datafrrame
 featuresetDF = test.createFeatureset_wDataframe("D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\Grid_with_neighbors.csv",
-       df,"D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\tempTallys\\ALGOTEST.csv")
+       df,tempTally)
 
 
 
