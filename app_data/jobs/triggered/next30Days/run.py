@@ -95,7 +95,7 @@ import DecisionTreeTestAutomated as DST
 import feature_creation_with_near as test
 import json
 
-"""
+
 
 db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="lmurdock12",
             passwd='TheCloudtest2019',db="crimes",ssl={"ssl":{"ssl-ca":"D:\\\\home\\ssl\\BaltimoreCyberTrustRoot.crt.pem"}})
@@ -147,11 +147,10 @@ for i in range(len(json_decoded['data']['features'])):
     json_decoded['data']['features'][i]['properties']['ActualHot'] = 0
     json_decoded['data']['features'][i]['properties']['PredictHot'] = int(resultsDF[i])
 
-with open("D:\\\\home\\site\\wwwroot\\KNN_GEO.json", 'w') as json_file:
+with open("D:\\\\home\\site\\wwwroot\\KNN_GEO2.json", 'w') as json_file:
     json.dump(json_decoded, json_file)
 
 
 print("process complete")
 logging.info("Process Complete!")
 
-"""
