@@ -1,8 +1,6 @@
 import sys
 site_packages = "D:\\home\\site\\wwwroot\\env\\Lib\\site-packages"
 sys.path.append(site_packages)
-import requests
-
 
 from sodapy import Socrata
 import pandas as pd
@@ -10,7 +8,7 @@ import sys
 from datetime import datetime, timedelta
 import subprocess
 import json 
-sys.path.insert(1, './GridDetection')
+sys.path.insert(1, 'D:\\\\home\\site\\wwwroot\\GridDetection')
 import appendGridNumToCrimeData as test
 import logging
 
