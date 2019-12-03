@@ -8,7 +8,7 @@ sys.path.insert(1, './GridDetection')
 import appendGridNumToCrimeData as test
 import logging
 
-logging.basicConfig(filename='D:\\\\home\\webJobTest.log', level=logging.INFO, filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='D:\\\\home\\LogFiles\\API_pull_Test.log', level=logging.INFO, filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 logging.info('Logging the next 30 days script')
 
 #Get the previous date for yesterday.
