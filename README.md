@@ -14,3 +14,4 @@ git push azure AzureMaster:master //This command pushes the local AzureMaster br
 py -3 -m venv env
 env\scripts\activate
 pip install {package}
+//Use command 'deactivate' to exit the python env

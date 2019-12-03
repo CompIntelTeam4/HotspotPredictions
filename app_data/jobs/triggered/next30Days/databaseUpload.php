@@ -6,7 +6,7 @@
 
 //Azure database credentials
 $servername = "crimewebsitedatabase.mysql.database.azure.com";
-$username = "lmurdock12";
+$username = "lmurdock12@crimewebsitedatabase";
 $password = "TheCloudtest2019";
 $myDB = "crimes";
 //Make connection instance
