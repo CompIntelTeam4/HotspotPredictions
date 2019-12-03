@@ -84,7 +84,6 @@ logging.info("First half complete.")
 
 import mysql.connector
 from mysql.connector.constants import ClientFlag
-import MySQLdb
 import pandas as pd
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta #for calculating time a year ago
