@@ -16,7 +16,7 @@ logging.basicConfig(filename='D:\\\\home\\LogFiles\\API_pull_Test.log', level=lo
 logging.info('Logging the next 30 days script')
 
 #Get the previous date for yesterday.
-yesterday = (datetime.now()-timedelta(2)).strftime('%Y-%m-%d')
+yesterday = (datetime.now()-timedelta(1)).strftime('%Y-%m-%d')
 
 #Set up the query time parameters
 queryStart = yesterday + 'T00:00:00.000'
@@ -80,7 +80,7 @@ logging.info(script_response)
 
 #Columns I need to parse are primary_incident_num (0), incident_occured(7), offense_nibrs(13), latitude (25), longitude (26), grid (31)
 logging.info("First half complete.")
-"""
+
 
 import mysql.connector
 from mysql.connector.constants import ClientFlag
@@ -95,7 +95,7 @@ import DecisionTreeTestAutomated as DST
 import feature_creation_with_near as test
 import json
 
-
+"""
 
 db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="lmurdock12",
             passwd='TheCloudtest2019',db="crimes",ssl={"ssl":{"ssl-ca":"D:\\\\home\\ssl\\BaltimoreCyberTrustRoot.crt.pem"}})

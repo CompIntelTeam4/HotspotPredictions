@@ -28,7 +28,7 @@ echo "Connection Successful";
 
 $date = new DateTime();
 $date->setTimeZone(new DateTimeZone("US/Central"));
-$date->sub(new DateInterval('P2D'));
+$date->sub(new DateInterval('P1D'));
 echo "Current time: " . $date->format('Y-m-d') . "<br>";
 $yesterday = $date->format('Y-m-d');
 //$tz = $date->getTimezone();

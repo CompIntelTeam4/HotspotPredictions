@@ -9,7 +9,7 @@
 
     if(isset($_POST['predict30Submit'])) {
         echo "test";
-        header('Location:map.php');
+        header('Location:pyTest.php');
 
     }
 
