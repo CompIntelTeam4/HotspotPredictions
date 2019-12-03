@@ -1,6 +1,6 @@
+from sodapy import Socrata
 import pandas as pd
 import sys
-from sodapy import Socrata
 from datetime import datetime, timedelta
 import subprocess
 import json 
