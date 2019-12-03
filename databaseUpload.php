@@ -26,9 +26,14 @@ if(!mysqli_real_connect($connection,$servername,$username,$password,$myDB)) {
 echo "Connection Successful";
 
 
-$yesterday = date('Y-m-d', strtotime(' -2 day'));
+$date = new DateTime();
+$date->setTimeZone(new DateTimeZone("US/Central"));
+$date->sub(new DateInterval('P1D'));
+echo "Current time: " . $date->format('Y-m-d') . "<br>";
+$yesterday = $date->format('Y-m-d');
+//$tz = $date->getTimezone();
+//echo $tz->getName() . "<br>";
 
-echo $yesterday. "<br>";
 
 $file_name = "C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_prediction\\Data\\Crime_data\\tempData\\crime_wGrid_" . $yesterday . ".csv";
 echo $file_name;

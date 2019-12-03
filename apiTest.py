@@ -12,7 +12,7 @@ import appendGridNumToCrimeData as test
 #d.day
 
 
-yesterday = (datetime.now()-timedelta(2)).strftime('%Y-%m-%d')
+yesterday = (datetime.now()-timedelta(1)).strftime('%Y-%m-%d')
 
 
 queryStart = yesterday + 'T00:00:00.000'
