@@ -16,7 +16,7 @@ logging.basicConfig(filename='D:\\\\home\\LogFiles\\API_pull_Test.log', level=lo
 logging.info('Logging the next 30 days script')
 
 #Get the previous date for yesterday.
-yesterday = (datetime.now()-timedelta(1)).strftime('%Y-%m-%d')
+yesterday = (datetime.now()-timedelta(2)).strftime('%Y-%m-%d')
 
 #Set up the query time parameters
 queryStart = yesterday + 'T00:00:00.000'
