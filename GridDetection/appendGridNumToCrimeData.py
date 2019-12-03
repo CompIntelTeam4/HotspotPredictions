@@ -68,7 +68,7 @@ def append_grid_wDataframe(grid_file, crimeDataframe):
 
     start = time.time()*1000
     
-    grid = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\" + grid_file
+    grid = grid_file
     grid = pd.read_csv(grid)
 
     crimeDataframe['grid'] = -1
