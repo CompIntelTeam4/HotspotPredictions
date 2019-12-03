@@ -83,7 +83,6 @@ logging.info("First half complete.")
 
 
 
-import MySQLdb
 import pandas as pd
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta #for calculating time a year ago
@@ -96,8 +95,24 @@ import json
 
 
 
+import mysql.connector
+from mysql.connector.constants import ClientFlag
+
+
+try:
+    db = mysql.connector.connect(host="crimewebsitedatabase.mysql.database.azure.com",
+                user="lmurdock12@crimewebsitedatabase",
+                password="TheCloudtest2019",
+                db="crimes",
+                port=3306,
+                ssl_ca="D:\\\\home\\ssl\\BaltimoreCyberTrustRoot.crt.pem")
+except mysql.connector.Error as err:
+    print(err)
+
+
+"""
 db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="lmurdock12",
-            passwd='TheCloudtest2019',db="crimes",ssl={"ssl":{"ssl-ca":"D:\\\\home\\ssl\\BaltimoreCyberTrustRoot.crt.pem"}})
+            passwd='TheCloudtest2019',db="crimes",ssl={"ssl":{"ssl-ca":"D:\\\\home\\ssl\\BaltimoreCyberTrustRoot.crt.pem"}})"""
 
 
 yesterday = (datetime.now()-relativedelta(years=1))
