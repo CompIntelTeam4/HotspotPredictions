@@ -88,8 +88,8 @@ import pandas as pd
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta #for calculating time a year ago
 import sys
-sys.path.insert(1, './GridDetection/FeatureTargetCreation')
-sys.path.insert(1, "./MachineLearningAlgos")
+sys.path.insert(1, 'D:\\\\home\\site\\wwwroot\\GridDetection\\FeatureTargetCreation')
+sys.path.insert(1, "D:\\\\home\\site\\wwwroot\\MachineLearningAlgos")
 import DecisionTreeTestAutomated as DST
 import feature_creation_with_near as test
 import json
