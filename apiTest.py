@@ -49,7 +49,7 @@ results_df = pd.DataFrame.from_records(results)
 
 print("Appending the grid number to each crime...")
 #Run the dataframe through appendGrid function to add grid number to each crime
-crime_wGrid = test.append_grid_wDataframe('C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\Grid_with_neighbors.csv', results_df)
+crime_wGrid = test.append_grid_wDataframe('C:\\\\xampp\htdocs\HotspotPredictions\Data\Crime_dataGrid_with_neighbors.csv', results_df)
 
 
 print("Exporting the crimes to temporary CSV...")
