@@ -31,13 +31,14 @@ db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="
 
 
 
+rawTargetCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\Feb2019Crimes.csv"
+rawsFeatureCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\Feb2018-Jan2018Crimes.csv"
 
-
-hotspotCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\Jan2019.csv"
-crimeTallysPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\crimeTallys\\Jan2018-December2019tally.csv"
-completedSetPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\readyDatasets\\predictJan2019_wCrimeTallysJan2018-December2019.csv"
-targMonth = 5
-targYear = 2018
+hotspotCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\Feb2019.csv"
+crimeTallysPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\crimeTallys\\Feb2018-Jan2019tally.csv"
+completedSetPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\readyDatasets\\predictFeb2019_wCrimeTallysFeb2018-Jan2019.csv"
+targMonth = 2
+targYear = 2019
 targDay = 1
 
 startDate = str(targYear-1) + "-" + str(targMonth) + "-" + str(targDay) + " 00:00:00"
