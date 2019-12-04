@@ -158,7 +158,7 @@ def createFeatureset_wDataframe_wDate(grid_path, crimeDataframe, output_path, ta
     #Gonna need to pass in the month day and year
 
     #Loop through each grid in the dataset
-    for grid_index, grid_row in grid.sample(5).iterrows():
+    for grid_index, grid_row in grid.sample(30).iterrows():
         #print("On grid number: ", grid_row['id'])
         if(grid_index%5 ==0):
             print("On grid: " + str(grid_index))

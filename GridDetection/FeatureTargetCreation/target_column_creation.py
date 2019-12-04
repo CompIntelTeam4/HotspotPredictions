@@ -52,7 +52,7 @@ def targetCreation_wDF(gridFilePath, crimeDF,outputPath, targetMonth):
     ######################################################################
 
     #Loop through and determine if a hot spot for each grid
-    for grid_index, grid_row in grid.sample(5).iterrows():
+    for grid_index, grid_row in grid.sample(30).iterrows():
         if grid_index%500 == 0:
             print("On grid number: ", grid_row['id'])
 
