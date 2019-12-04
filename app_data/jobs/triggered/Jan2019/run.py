@@ -33,12 +33,12 @@ db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="
             passwd='TheCloudtest2019',db="crimes",ssl={"ssl":{"ssl-ca":"C:\\\\xampp\\phpMyAdmin\\ssl\\BaltimoreCyberTrustRoot.crt.pem"}})"""
 
 
-
-
+rawTargetCSVpath = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\PastDatasets\\rawCrimes\\Jan2019Crimes.csv"
+rawsFeatureCSVpath = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\PastDatasets\\rawCrimes\\Jan2018-December2018Crimes.csv"
 
 hotspotCSVpath = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\Jan2019.csv"
 crimeTallysPath = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\PastDatasets\\crimeTallys\\Jan2018-December2019tally.csv"
-completedSetPath = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\PastDatasets\\readyDatasets\\predictJan2019_wCrimeTallysJan2018-December2019.csv"
+completedSetPath = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\PastDatasets\\readyDatasets\\predictJan2019_wCrimeTallysJan2018-December2018.csv"
 targMonth = 1
 targYear = 2019
 targDay = 1
@@ -66,6 +66,10 @@ print("Getting the SQL query")
 targetDataDF = pd.read_sql(sql1,db)
 featureDF = pd.read_sql(sql2,db)
 #print(featureDF)
+
+
+featureDF.to_csv(rawsFeatureCSVpath,index=False,encoding='utf8')
+targetDataDF.to_csv(rawTargetCSVpath,index=False,encoding='utf8')
 
 print("Creating the target column")
 targetDF = targetCreationFunc.targetCreation_wDF("D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\Grid_with_neighbors.csv", targetDataDF,hotspotCSVpath,targMonth)
