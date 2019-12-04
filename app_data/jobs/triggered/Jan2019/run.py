@@ -7,7 +7,6 @@ import subprocess
 import json 
 import mysql.connector
 from mysql.connector.constants import ClientFlag
-import MySQLdb
 from dateutil.relativedelta import relativedelta #for calculating time a year ago
 sys.path.insert(1, 'D:\\\\home\\site\\wwwroot\\GridDetection\\FeatureTargetCreation')
 sys.path.insert(1, "D:\\\\home\\site\\wwwroot\\MachineLearningAlgos")
