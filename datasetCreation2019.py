@@ -36,12 +36,20 @@ db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="
 hotspotCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\Jan2019.csv"
 crimeTallysPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\crimeTallys\\Jan2018-December2019tally.csv"
 completedSetPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\readyDatasets\\predictJan2019_wCrimeTallysJan2018-December2019.csv"
-targMonth = 1
-targYear = 2019
+targMonth = 5
+targYear = 2018
 targDay = 1
 
-sql1 = "SELECT * FROM incidents WHERE MONTH(incident_occured) = 1 and YEAR(incident_occured) = 2019" 
-sql2 = "SELECT * FROM incidents WHERE incident_occured >= '2018-01-1 00:00:00' and incident_occured < '2019-1-1 00:00:00'"
+startDate = str(targYear-1) + "-" + str(targMonth) + "-" + str(targDay) + " 00:00:00"
+endDate = str(targYear) + "-" + str(targMonth) + "-" + str(targDay) + " 00:00:00"
+print(startDate)
+print(endDate)
+
+
+sql1 = "SELECT * FROM incidents WHERE MONTH(incident_occured) = " + str(targMonth) + " and YEAR(incident_occured) = " + str(targYear)  
+sql2 = "SELECT * FROM incidents WHERE incident_occured >= '" + startDate + "' and incident_occured < '" + endDate + "'"
+
+
 
 """
 testdf = pd.read_sql(sql1,db)
@@ -105,4 +113,3 @@ with open("KNN_GEO.json", 'w') as json_file:
 
 
 print("process complete")"""
-
