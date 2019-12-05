@@ -68,7 +68,7 @@ def append_grid_wDataframe(grid_file, crimeDataframe):
 
     start = time.time()*1000
     
-    grid = "C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_Prediction\\Data\\Crime_Data\\" + grid_file
+    grid = grid_file
     grid = pd.read_csv(grid)
 
     crimeDataframe['grid'] = -1
@@ -106,8 +106,8 @@ def append_grid_wDataframe(grid_file, crimeDataframe):
     return crimeDataframe
 
 
-if __name__ == "__main__":
-    append_grid_wFile('Grid_with_neighbors.csv','2019_assaults.csv')
+#if __name__ == "__main__":
+    #append_grid_wFile('Grid_with_neighbors.csv','2019_assaults.csv')
 
 
     
