@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as numpy
 from sklearn import tree
-from sklearn.metrics import accuracy_score, adjusted_rand_score
+from sklearn.metrics import accuracy_score, adjusted_rand_score, confusion_matrix
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 import time
@@ -33,7 +33,7 @@ X_test = test
 
 #KNearestNeighbors Tree Classifier
 MLP = MLPClassifier(
-                    hidden_layer_sizes=(12,))
+                    hidden_layer_sizes=8,max_iter=400)
 
 
 
@@ -46,8 +46,10 @@ MLP_prediction = MLP.predict(X_test)
 #Compute the accuracy by comparing the actual values to the prediction values
 score = accuracy_score(Y_test,MLP_prediction)
 score2 = accuracy_score(Y_test,MLP_prediction, normalize=False)
+con= confusion_matrix(Y_test,MLP_prediction)
 print("Accuracy: ", score)
 print("Misses: ", len(Y_test)-score2)
+print(con)
 
 
 #print(len(Y_test))
@@ -64,7 +66,7 @@ final_output.insert(0,'Grid',range(1,1+len(final_output)))
 #print(final_output)
 
 
-final_output.to_csv("C:\\Users\\willi\\Documents\\Data\\KNNinitial2017Test.csv",index=False,encoding='utf8')
+final_output.to_csv("C:\\Users\\willi\\Documents\\Data\\Mutilayer2017Test.csv",index=False,encoding='utf8')
 
 #Need to add the index as a column for the output and increase by one to get the actual grid
 

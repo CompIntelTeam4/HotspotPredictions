@@ -2,13 +2,13 @@
 import pandas as pd
 import numpy as numpy
 from sklearn import tree
-from sklearn.metrics import accuracy_score, adjusted_rand_score
+from sklearn.metrics import accuracy_score, adjusted_rand_score, confusion_matrix
 from sklearn.model_selection import train_test_split
 import time
 
                     #C:\Users\Lucian Murdock\Desktop\Computational_Intelligence\Crime_Prediction\Data\Crime_Data\ReadyDataSets
-train = pd.read_csv('C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_Prediction\\Data\\Crime_Data\\ReadyDataSets\\crime_tallys_2016_wNear_predictJan2017.csv')
-test = pd.read_csv('C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_Prediction\\Data\\Crime_Data\\ReadyDataSets\\crime_tallys_2017_wNear_predictJan2018.csv')
+train = pd.read_csv('C:\\Users\\willi\\Documents\\Data\\crime_tallys_2016_withNear.csv')
+test = pd.read_csv('C:\\Users\\willi\\Documents\\Data\\crime_tallys_2017_withNear.csv')
 
 
 #Remove the Grid column in the data sets and use indices instead to keep track of the grids
@@ -17,9 +17,10 @@ test.pop('Grid')
 #Remove all the rows with entire row being 0 --This should keep proper indices
 #train = train[(train.T != 0).any()]
 #test = test[(test.T != 0).any()]
-
+#train = train[(train.T != 0).any()]
 #Get the Y values
 Y_train = train.pop('Hotspot')
+
 X_train = train
 Y_test = test.pop('Hotspot')
 X_test = test
@@ -44,9 +45,11 @@ dt_prediction = decision_tree.predict(X_test)
 #Compute the accuracy by comparing the actual values to the prediction values
 score = accuracy_score(Y_test,dt_prediction)
 score2 = accuracy_score(Y_test,dt_prediction, normalize=False)
+con=confusion_matrix(Y_test,dt_prediction)
+
 print("Accuracy: ", score)
 print("Misses: ", len(Y_test)-score2)
-
+print(con)
 
 #print(len(Y_test))
 #print(Y_test.index.values)
@@ -62,7 +65,7 @@ final_output.insert(0,'Grid',range(1,1+len(final_output)))
 #print(final_output)
 
 
-final_output.to_csv("C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_prediction\\Data\\Crime_data\\Results\\DSTinitial2017Test.csv",index=False,encoding='utf8')
+final_output.to_csv("C:\\Users\\willi\\Documents\\Data\\DSTinitial2017Test.csv",index=False,encoding='utf8')
 
 #Need to add the index as a column for the output and increase by one to get the actual grid
 
