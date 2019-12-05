@@ -14,7 +14,7 @@ import feature_creation_with_near as fc
 import target_column_creation as targetCreationFunc
 sys.path.insert(1, './GridDetection')
 import appendGridNumToCrimeData as test
-
+import time
 
 try:
     db = mysql.connector.connect(host="crimewebsitedatabase.mysql.database.azure.com",
@@ -29,14 +29,15 @@ except mysql.connector.Error as err:
 db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="lmurdock12",
             passwd='TheCloudtest2019',db="crimes",ssl={"ssl":{"ssl-ca":"C:\\\\xampp\\phpMyAdmin\\ssl\\BaltimoreCyberTrustRoot.crt.pem"}})"""
 
+start = time.time()*1000
 
 
-rawTargetCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\Feb2019Crimes.csv"
-rawsFeatureCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\Feb2018-Jan2018Crimes.csv"
+rawTargetCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\V2Feb2019Crimes.csv"
+rawsFeatureCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\V2Feb2018-Jan2019Crimes.csv"
 
-hotspotCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\Feb2019.csv"
-crimeTallysPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\crimeTallys\\Feb2018-Jan2019tally.csv"
-completedSetPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\readyDatasets\\predictFeb2019_wCrimeTallysFeb2018-Jan2019.csv"
+hotspotCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\V2Feb2019.csv"
+crimeTallysPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\crimeTallys\\V2Feb2018-Jan2019tally.csv"
+completedSetPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\readyDatasets\\V2predictFeb2019_wCrimeTallysFeb2018-Jan2019.csv"
 targMonth = 2
 targYear = 2019
 targDay = 1
@@ -65,12 +66,16 @@ targetDataDF = pd.read_sql(sql1,db)
 featureDF = pd.read_sql(sql2,db)
 #print(featureDF)
 
+featureDF.to_csv(rawsFeatureCSVpath,index=False,encoding='utf8')
+targetDataDF.to_csv(rawTargetCSVpath,index=False,encoding='utf8')
+
 print("Creating the target column")
-targetDF = targetCreationFunc.targetCreation_wDF("C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\Grid_with_neighbors.csv", targetDataDF,hotspotCSVpath,targMonth)
+#targetDF = targetCreationFunc.targetCreation_wDF("C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\Grid_with_neighbors.csv", targetDataDF,hotspotCSVpath,targMonth)
+targetDF = pd.read_csv("C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\V2Feb2019.csv")
 
 print("Creating the featureset...")
 #Create and return the datafrrame
-featuresetDF = fc.createFeatureset_wDataframe_wDate("C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\Grid_with_neighbors.csv",
+featuresetDF = fc.createFeatureset_wDataframe_wDateV2("C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\Grid_with_neighbors.csv",
        featureDF,crimeTallysPath,targDay,targMonth,targYear)
 
 
@@ -84,6 +89,11 @@ print(featuresetDF)
 
 
 featuresetDF.to_csv(completedSetPath,index=False,encoding='utf8')
+
+end = time.time()*1000
+print("Time took: ", end-start)
+
+print("-: ", start-end)
 
 """
 
