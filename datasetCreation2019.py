@@ -32,13 +32,13 @@ db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="
 start = time.time()*1000
 
 
-rawTargetCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\V2Feb2019Crimes.csv"
-rawsFeatureCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\V2Feb2018-Jan2019Crimes.csv"
+rawTargetCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\May2019Crimes.csv"
+rawsFeatureCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\May2018-April2019Crimes.csv"
 
-hotspotCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\V2Feb2019.csv"
-crimeTallysPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\crimeTallys\\V2Feb2018-Jan2019tally.csv"
-completedSetPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\readyDatasets\\V2predictFeb2019_wCrimeTallysFeb2018-Jan2019.csv"
-targMonth = 2
+hotspotCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\May2019.csv"
+crimeTallysPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\crimeTallys\\May2018-April2019tally.csv"
+completedSetPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\readyDatasets\\predictMay2019_wCrimeTallysMay2018-April2019.csv"
+targMonth = 5
 targYear = 2019
 targDay = 1
 
@@ -51,6 +51,8 @@ print(endDate)
 sql1 = "SELECT * FROM incidents WHERE MONTH(incident_occured) = " + str(targMonth) + " and YEAR(incident_occured) = " + str(targYear)  
 sql2 = "SELECT * FROM incidents WHERE incident_occured >= '" + startDate + "' and incident_occured < '" + endDate + "'"
 
+print("Hotspot SQL: ", sql1)
+print("Featureset SQL: ", sql2)
 
 
 """
@@ -92,7 +94,6 @@ featuresetDF.to_csv(completedSetPath,index=False,encoding='utf8')
 end = time.time()*1000
 print("Time took: ", end-start)
 
-print("-: ", start-end)
 
 """
 
