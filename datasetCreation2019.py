@@ -70,8 +70,7 @@ featureDF.to_csv(rawsFeatureCSVpath,index=False,encoding='utf8')
 targetDataDF.to_csv(rawTargetCSVpath,index=False,encoding='utf8')
 
 print("Creating the target column")
-#targetDF = targetCreationFunc.targetCreation_wDF("C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\Grid_with_neighbors.csv", targetDataDF,hotspotCSVpath,targMonth)
-targetDF = pd.read_csv("C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\V2Feb2019.csv")
+targetDF = targetCreationFunc.targetCreation_wDF("C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\Grid_with_neighbors.csv", targetDataDF,hotspotCSVpath,targMonth)
 
 print("Creating the featureset...")
 #Create and return the datafrrame
