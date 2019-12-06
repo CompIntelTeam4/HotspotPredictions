@@ -446,7 +446,7 @@ def createFeatureset_wDataframe_wDateV2(grid_path, crimeDataframe, output_path, 
             total_near = 0 
             near_grids = ['top ','bottom ','left ','right ','topleft','topright','bottomleft','bottomright']
 
-            
+            """
             if grid_row['id'] == 2071:
                 print('top: ', grid_row['top '])
                 if grid_row['top '] in gridToCrimeMap:
@@ -473,6 +473,7 @@ def createFeatureset_wDataframe_wDateV2(grid_path, crimeDataframe, output_path, 
                 if grid_row['bottomright'] in gridToCrimeMap:
                     print("bottomright grid # is: " + str(grid_row['bottomright']) + ", and crimes within last year are: " + str(gridToCrimeMap[grid_row['bottomright']]['lastYear']))
             
+            """
             for i in range(len(near_grids)):
 
                 if grid_row[near_grids[i]] in gridToCrimeMap:
