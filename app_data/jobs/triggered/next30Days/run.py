@@ -121,6 +121,9 @@ db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="
 
 
 yesterday = (datetime.now()-relativedelta(years=1))
+day = yesterday.day
+month = yesterday.month
+year = yesterday.year
 yesterday = str(yesterday).split(' ')[0] #Convert datetime object to string and just take the date without time
 print(str(yesterday).split(' ')[0])
 
@@ -141,7 +144,7 @@ logging.info("Creating the featureset...")
 tempTally = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\tempTallys\\crimeTallys_" + yesterday + ".csv"
 #Create and return the datafrrame
 featuresetDF = test.createFeatureset_wDataframe_wDateV2("D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\Grid_with_neighbors.csv",
-       df,tempTally,yesterday.day,yesterday.month,yesterday.year)
+       df,tempTally,day,month,year)
 
 
 
