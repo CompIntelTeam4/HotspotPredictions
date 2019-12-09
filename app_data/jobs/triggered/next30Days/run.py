@@ -19,7 +19,7 @@ logging.basicConfig(filename='D:\\\\home\\LogFiles\\API_pull_Test.log', level=lo
 logging.info('Logging the next 30 days script')
 os.environ['TZ'] = 'US/Central'
 #Get the previous date for yesterday.
-yesterday = (datetime.now()-relativedelta(days=1)).strftime('%Y-%m-%d')
+yesterday = (datetime.now()-relativedelta(days=2)).strftime('%Y-%m-%d')
 
 
 print("current time is :. ", datetime.now())
@@ -152,7 +152,7 @@ featuresetDF = test.createFeatureset_wDataframe_wDateV2("D:\\\\home\\site\\wwwro
 
 print("Training the dataset")
 logging.info("Training the dataset")
-resultsDF = DST.trainData(featuresetDF,"D:\\\\home\\site\\wwwroot\\trained_models\\DST_saved_model.sav")
+resultsDF = DST.trainData(featuresetDF,"D:\\\\home\\site\\wwwroot\\trained_models\\KNN_MODEL.sav")
 print(resultsDF.shape)
 
 

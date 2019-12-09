@@ -1,7 +1,7 @@
 
 import pandas as pd
 import numpy as numpy
-from sklearn.tree import tree
+from sklearn import tree
 from sklearn.metrics import accuracy_score, adjusted_rand_score
 from sklearn.model_selection import train_test_split
 import time
