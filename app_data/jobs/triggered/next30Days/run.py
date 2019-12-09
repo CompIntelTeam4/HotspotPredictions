@@ -4,7 +4,7 @@ sys.path.append(site_packages)
 
 
 
-
+import os
 from sodapy import Socrata
 import pandas as pd
 import sys
@@ -17,7 +17,7 @@ import logging
 
 logging.basicConfig(filename='D:\\\\home\\LogFiles\\API_pull_Test.log', level=logging.INFO, filemode='w', format='%(name)s - %(levelname)s - %(message)s')
 logging.info('Logging the next 30 days script')
-
+os.environ['TZ'] = 'US/Central'
 #Get the previous date for yesterday.
 yesterday = (datetime.now()-timedelta(1)).strftime('%Y-%m-%d')
 
