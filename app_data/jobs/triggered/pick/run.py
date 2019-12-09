@@ -111,7 +111,7 @@ score = accuracy_score(Y_test,KNN_prediction)
 score2 = accuracy_score(Y_test,KNN_prediction, normalize=False)
 
 import pickle
-pickle.dump(KNN,open("KNN_MODEL.sav",'wb'))
+pickle.dump(KNN,open("D:\\\\home\\site\\wwwroot\\trained_models\\KNN_MODEL.sav",'wb'))
 
 pred_series = pd.Series(KNN_prediction, index=Y_test.index, name="predictions")
 
