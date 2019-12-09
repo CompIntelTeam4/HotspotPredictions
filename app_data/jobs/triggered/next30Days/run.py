@@ -3,7 +3,7 @@ site_packages = "D:\\home\\site\\wwwroot\\env\\Lib\\site-packages"
 sys.path.append(site_packages)
 
 
-activate_this_file = "D:\home\site\wwwroot\env\Scripts\activate"
+activate_this_file = "D:\\home\\site\\wwwroot\\env\\Scripts\\activate"
 
 execfile(activate_this_file, dict(__file__=activate_this_file))
 
