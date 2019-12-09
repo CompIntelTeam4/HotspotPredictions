@@ -19,7 +19,7 @@ logging.basicConfig(filename='D:\\\\home\\LogFiles\\API_pull_Test.log', level=lo
 logging.info('Logging the next 30 days script')
 os.environ['TZ'] = 'US/Central'
 #Get the previous date for yesterday.
-yesterday = (datetime.now()-relativedelta(days=1)).strftime('%Y-%m-%d')
+yesterday = (datetime.now()-relativedelta(days=2)).strftime('%Y-%m-%d')
 
 #Set up the query time parameters
 queryStart = yesterday + 'T00:00:00.000'
@@ -27,6 +27,8 @@ print("date is: ", queryStart)
 queryEnd = yesterday + 'T23:59:59.000'
 print(queryEnd)
 
+print("this is from PRINT")
+logging.info("THIS IS FROM LOG")
 #Create the query
 query = "incident_occurred between '" + queryStart + "' and '" + queryEnd + "' and (offense_nibrs='13A' or offense_nibrs='13B' or offense_nibrs='13C') and latitude IS NOT NULL and longitude IS NOT NULL"
 print(query)
@@ -138,7 +140,7 @@ logging.info("Creating the featureset...")
 
 tempTally = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\tempTallys\\crimeTallys_" + yesterday + ".csv"
 #Create and return the datafrrame
-featuresetDF = test.createFeatureset_wDataframeV2("D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\Grid_with_neighbors.csv",
+featuresetDF = test.createFeatureset_wDataframe_wDateV2("D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\Grid_with_neighbors.csv",
        df,tempTally)
 
 
