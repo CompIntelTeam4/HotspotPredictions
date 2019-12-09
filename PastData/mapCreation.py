@@ -15,6 +15,7 @@ def createMap(dataset, model):
     dataset.pop('Grid')
     Y_test = dataset.pop('Hotspot')
 
+    model_filepath = "D:\\\\home\\site\\wwwroot\\trained_models\\" + model
     decision_tree = pickle.load(open(model,'rb'))
 
     dt_prediction = decision_tree.predict(dataset)
