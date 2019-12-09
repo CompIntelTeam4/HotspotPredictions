@@ -23,7 +23,7 @@ yesterday = (datetime.now()-timedelta(1)).strftime('%Y-%m-%d')
 
 #Set up the query time parameters
 queryStart = yesterday + 'T00:00:00.000'
-print(queryStart)
+print("date is: ", queryStart)
 queryEnd = yesterday + 'T23:59:59.000'
 print(queryEnd)
 
