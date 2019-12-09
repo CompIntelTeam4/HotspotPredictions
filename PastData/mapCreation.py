@@ -1,3 +1,7 @@
+import sys
+site_packages = "D:\\\\home\\site\\wwwroot\\env\\Lib\\site-packages"
+sys.path.append(site_packages)
+
 import pandas as pd 
 import sys
 import pickle 
