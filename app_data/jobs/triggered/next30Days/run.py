@@ -25,7 +25,7 @@ yesterday = (datetime.now()-relativedelta(days=2)).strftime('%Y-%m-%d')
 queryStart = yesterday + 'T00:00:00.000'
 print("date is: ", queryStart)
 queryEnd = yesterday + 'T23:59:59.000'
-print(queryEnd)
+print("date is: ", queryEnd)
 
 print("this is from PRINT")
 logging.info("THIS IS FROM LOG")
@@ -141,7 +141,7 @@ logging.info("Creating the featureset...")
 tempTally = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\tempTallys\\crimeTallys_" + yesterday + ".csv"
 #Create and return the datafrrame
 featuresetDF = test.createFeatureset_wDataframe_wDateV2("D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\Grid_with_neighbors.csv",
-       df,tempTally)
+       df,tempTally,yesterday.day,yesterday.month,yesterday.year)
 
 
 
