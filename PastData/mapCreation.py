@@ -42,7 +42,6 @@ def createMap(dataset, model):
 
 
     dic = ['1','2','3']
-    dic.append(test)
     return json.dumps(dic)
 
 if __name__ == "__main__":
