@@ -5,7 +5,7 @@ sys.path.append(site_packages)
 import pandas as pd 
 import sys
 import pickle 
-
+import  json
 
 def createMap(dataset, model):
 
@@ -34,8 +34,8 @@ def createMap(dataset, model):
     for i in range(len(json_decoded['data']['features'])):
         if i%1000 ==0:
             print("on row: ", i)
-        json_decoded['data']['features'][i]['properties']['ActualHot'] = int(train['Hotspot'][i])
-        json_decoded['data']['features'][i]['properties']['PredictHot'] = int(train['predictions'][i])
+        json_decoded['data']['features'][i]['properties']['ActualHot'] = int(final_output['Hotspot'][i])
+        json_decoded['data']['features'][i]['properties']['PredictHot'] = int(final_output['predictions'][i])
 
     with open("CRIME_GEO.json", 'w') as json_file:
         json.dump(json_decoded, json_file)
