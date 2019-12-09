@@ -21,6 +21,8 @@ os.environ['TZ'] = 'US/Central'
 #Get the previous date for yesterday.
 yesterday = (datetime.now()-relativedelta(days=1)).strftime('%Y-%m-%d')
 
+
+print("current time is :. ", datetime.now())
 #Set up the query time parameters
 queryStart = yesterday + 'T00:00:00.000'
 print("date is: ", queryStart)
