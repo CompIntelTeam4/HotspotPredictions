@@ -135,7 +135,7 @@ logging.info("Creating the featureset...")
 
 tempTally = "D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\tempTallys\\crimeTallys_" + yesterday + ".csv"
 #Create and return the datafrrame
-featuresetDF = test.createFeatureset_wDataframe("D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\Grid_with_neighbors.csv",
+featuresetDF = test.createFeatureset_wDataframeV2("D:\\\\home\\site\\wwwroot\\Data\\Crime_data\\Grid_with_neighbors.csv",
        df,tempTally)
 
 
@@ -163,7 +163,7 @@ for i in range(len(json_decoded['data']['features'])):
     json_decoded['data']['features'][i]['properties']['ActualHot'] = 0
     json_decoded['data']['features'][i]['properties']['PredictHot'] = int(resultsDF[i])
 
-with open("D:\\\\home\\site\\wwwroot\\KNN_GEO2.json", 'w') as json_file:
+with open("D:\\\\home\\site\\wwwroot\\KNN_GEO.json", 'w') as json_file:
     json.dump(json_decoded, json_file)
 
 
