@@ -7,14 +7,16 @@ import mysql.connector
 from mysql.connector.constants import ClientFlag
 import MySQLdb
 from dateutil.relativedelta import relativedelta #for calculating time a year ago
-sys.path.insert(1, './GridDetection/FeatureTargetCreation')
+sys.path.insert(1, 'C:\\\\xampp\\htdocs\\HotspotPredictions\\GridDetection\\FeatureTargetCreation')
 sys.path.insert(1, "./MachineLearningAlgos")
-import DecisionTreeTestAutomated as DST
+
 import feature_creation_with_near as fc
 import target_column_creation as targetCreationFunc
-sys.path.insert(1, './GridDetection')
+sys.path.insert(1, 'C:\\\\xampp\\htdocs\\HotspotPredictions\\GridDetection')
 import appendGridNumToCrimeData as test
 import time
+
+#predictJun2018_wCrimeTallysJun2017-Apr2018
 
 try:
     db = mysql.connector.connect(host="crimewebsitedatabase.mysql.database.azure.com",
@@ -32,14 +34,14 @@ db = MySQLdb.connect(host="crimewebsitedatabase.mysql.database.azure.com",user="
 start = time.time()*1000
 
 
-rawTargetCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\V2Feb2019Crimes.csv"
-rawsFeatureCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\V2Feb2018-Jan2019Crimes.csv"
+rawTargetCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\Jun2018Crimes.csv"
+rawsFeatureCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\rawCrimes\\Jun2017-May2018Crimes.csv"
 
-hotspotCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\V2Feb2019.csv"
-crimeTallysPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\crimeTallys\\V2Feb2018-Jan2019tally.csv"
-completedSetPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\readyDatasets\\V2predictFeb2019_wCrimeTallysFeb2018-Jan2019.csv"
-targMonth = 2
-targYear = 2019
+hotspotCSVpath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\hotspotTallys\\Jun2018.csv"
+crimeTallysPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\crimeTallys\\Jun2017-May2018tally.csv"
+completedSetPath = "C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\PastDatasets\\readyDatasets\\predictJun2018_wCrimeTallysJun2017-May2018.csv"
+targMonth = 6
+targYear = 2018
 targDay = 1
 
 startDate = str(targYear-1) + "-" + str(targMonth) + "-" + str(targDay) + " 00:00:00"
@@ -51,6 +53,8 @@ print(endDate)
 sql1 = "SELECT * FROM incidents WHERE MONTH(incident_occured) = " + str(targMonth) + " and YEAR(incident_occured) = " + str(targYear)  
 sql2 = "SELECT * FROM incidents WHERE incident_occured >= '" + startDate + "' and incident_occured < '" + endDate + "'"
 
+print("Hotspot SQL: ", sql1)
+print("Featureset SQL: ", sql2)
 
 
 """
@@ -64,6 +68,7 @@ print("---")"""
 print("Getting the SQL query")
 targetDataDF = pd.read_sql(sql1,db)
 featureDF = pd.read_sql(sql2,db)
+print("Crimes in last year: ", featureDF.shape)
 #print(featureDF)
 
 featureDF.to_csv(rawsFeatureCSVpath,index=False,encoding='utf8')
@@ -92,7 +97,6 @@ featuresetDF.to_csv(completedSetPath,index=False,encoding='utf8')
 end = time.time()*1000
 print("Time took: ", end-start)
 
-print("-: ", start-end)
 
 """
 

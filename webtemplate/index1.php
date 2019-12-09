@@ -12,8 +12,28 @@
         header('Location:pyTest.php');
 
     }
+	
+	if(isset($_POST['customPredict'])) {
+		echo "Got predict";
+
+		if(isset($_POST['data']) && isset($_POST['algorithm'])) {
 
 
+			
+			//Predict Jan2019
+			//Predict Feb2019
+			//Predict Mar2019
+			//Predict Apr2019
+			//Predict May2019
+			//Predict Jun2019
+			$dataset = $_POST['data'];
+			$algo = $_POST['algorithm'];
+
+
+
+			echo "GOT DATA ALSO";
+		}
+	}
 
 ?>
 
@@ -75,18 +95,18 @@
                             </form>
 						</div>
 						
-						<form  method="post" id="myForm">				
+						<form  method="POST" id="myForm">				
 							<p>Customize your prediction</p>
 									<div class="dropdown">
 
-										<select name="category" id="data" name="data">
+										<select id="data" name="data">
 											<option value="">- Choose Data -</option>
-											<option value="twenty18">2018 data</option>
+											<option value="twenty18">Predict January 2019</option>
 											<option value="twenty17">2017 data</option>
 											<option value="twenty16">2016 data</option>
 										</select>
-										<select name="category" id="alogrithm" id="alogrithm" name="alogrithm">
-											<option value="">- Choose Alogrithm -</option>
+										<select id="alogrithm" name="algorithm">
+											<option value="">- Choose Algorithm -</option>
 											<option value="Decision Tree">Decision Tree</option>
 											<option value="Backprogation">Backprogation</option>
 											<option value="K_nearest">K-nearest</option>								
@@ -94,10 +114,9 @@
 									</div>
 								<br>
 							<ul class="actions">
-								<input type="button" onclick="customPrediction()" value="Submit form">
+								<button type="submit" name="customPredict">Run Algorithm </button>
 						</form>
 							</ul>
-						</form>
 					</article>
 				</div>
 				<a href="#two" class="more">Learn More</a>

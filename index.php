@@ -1,123 +1,150 @@
 
 <?php 
+//echo "test";
+//if(filter_has_var(INPUT_POST,'predict30Submit')) {
+	//echo "success";
+//}
 
-    //TEST PHP CODE FOR RUNNING PYTHON IN PHP AND SCRIPTING
+if(isset($_POST['predict30Submit'])) {
+	echo "test";
+	header('Location:next30Days');
 
-    /*
-    //Executing python file in php
-    echo "h <br>";
-    #$python = shell_exec('"C:\Users\Lucian Murdock\AppData\Local\Programs\Python\Python37\python.exe" test.py 2>&1');
-    $python = shell_exec('"D:\Python34\python.exe" test.py 2>&1');
-    $python_result = json_decode($python);
-    foreach ($python_result as $item) {
-        echo $item."<BR>";
-    }
-    echo "<br> end"
-    */
+}
 
-    /*
-    $string = file_get_contents("shortGeo.json");
-    $string_decode = json_decode($string,true);
-    //echo $string;
-    echo $string_decode['data']['features'][0]['geometry']['type'];
+if(isset($_POST['customPredict'])) {
+	echo "Got predict";
 
-    */
+	if(isset($_POST['data']) && isset($_POST['algorithm'])) {
+
+
+		
+		//Predict Jan2019
+		//Predict Feb2019
+		//Predict Mar2019
+		//Predict Apr2019
+		//Predict May2019
+		//Predict Jun2019
+		$dataset = $_POST['data'];
+		$algo = $_POST['algorithm'];
+
+		$python = shell_exec('"D:\Python34\python.exe" "D:\home\site\wwwroot\PastData\mapCreation.py" '. $dataset . ' ' . $algo . ' 2>&1');
+		$python_result = json_decode($python);
+
+		//header('Location:PastData');
+
+		echo $python;
+		foreach ($python_result as $item) {
+			echo $item."<BR>";
+		}
+		echo "<br> end";
+
+
+		echo "GOT DATA ALSO";
+	}
+}
 
 ?>
 
+<!DOCTYPE HTML>
 
-<?php 
-    $string = file_get_contents("KNN_GEO.json");
-?>
-
-<!DOCTYPE html>
 <html>
-<head>
-<meta charset='utf-8' />
-<title>Crime Predictions</title>
-<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
-<style>
-body { margin:0; padding:0; }
-#map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
-</head>
-<body>
- 
-<div id="map"></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoibG11cmRvY2sxMiIsImEiOiJjazJ1d2NobHIwM3ZzM2J0ZjdicTRhN3hjIn0.M3xbhDRz12zcYBnCDZPBnA';
-var map = new mapboxgl.Map({
-container: "map",
-style: "mapbox://styles/mapbox/streets-v11",
-center: [-86.403732, 36.1627],
-zoom: 10
-});
- 
-map.on("load", function() {
-    map.addSource("grid_cords", <?php echo $string ?>);
- 
-map.addLayer({
-"id": "gridPredictedHotspots",
-"type": "fill",//"fill",
-"source": "grid_cords",
-"paint": {
-"fill-color": "#FF0000",
-"fill-opacity": 0.25
-},
-"filter": ["==", "PredictHot",1]
-});
+	<head>
+		<title>Nashville Crime Prediction</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="index.js"></script>
+	</head>
+	<body>
 
-/*
-map.addLayer({
-"id": "gridActualHotspots",
-"type": "fill",//"fill",
-"source": "grid_cords",
-"paint": {
-"fill-color": "#0000FF",
-"fill-opacity": 0.25
-},
-"filter": ["==", "ActualHot",1]
-});*/
+		<!-- Banner -->
 
-map.addLayer({
-"id": "gridCombinedHotspots",
-"type": "fill",//"fill",
-"source": "grid_cords",
-"paint": {
-"fill-color": "#00FF00",
-"fill-opacity": 0.50
-},
-"filter":['all', ["==", "ActualHot",1],['==','PredictHot',1]]
-});
- 
-map.addLayer({
-"id": "grid_unfilled",
-"type": "line",//"fill",
-"source": "grid_cords",
-"paint": {
-"line-color": "#FF0000",
-"line-width":.5,
-//"fill-opacity": 0.5
-"line-opacity":.5
-},
-//"filter": ["<=", "id",1500]
-});
-//map.getSource("grid_cords")["_data"]['features'][0]['properties']['id'].toString()
-//map.setFilter(map.getSource("grid_cords"),[">","id",1500])
-console.log(map.getSource("grid"))
+			<section id="banner" class="bg-img" data-bg="banner.jpg">
+				<div class="inner">
+					<header>
+						<h1>Nashville Crime Prediction</h1>
+					</header>
+				</div>
+			</section>
 
+		<!-- ---------------------------------------------One---------------------------------------   -->
+		<section id="one" class="wrapper post bg-img" data-bg="banner2.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>Create Map</h2>
+						</header>
+						<div class="field half first">
+                            <!-- <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"> -->
+                            <form method="POST" action="">
+                                <button type="submit" name="predict30Submit"> Predict next 30 days</button>
+                            </form>
+						</div>
+						
+						<form  method="POST" id="myForm">				
+							<p>Customize your prediction</p>
+									<div class="dropdown">
 
+										<select id="data" name="data">
+											<option value="">- Choose Data -</option>
+											<option value="predictJan2019_wCrimeTallysJan2018-Dec2018.csv">Predict January 2019</option>
+											<option value="twenty17">2017 data</option>
+											<option value="twenty16">2016 data</option>
+										</select>
+										<select id="alogrithm" name="algorithm">
+											<option value="">- Choose Algorithm -</option>
+											<option value="Decision Tree">Decision Tree</option>
+											<option value="Backprogation">Backprogation</option>
+											<option value="KNN_MODEL.sav">K-nearest</option>								
+										</select>
+									</div>
+								<br>
+							<ul class="actions">
+								<button type="submit" name="customPredict">Run Algorithm </button>
+						</form>
+							</ul>
+					</article>
+				</div>
+				<a href="#two" class="more">Learn More</a>
+			</section>
 
+		<!-- ---------------------------------------------Two--------------------------------------------- -->
+			<section id="two" class="wrapper post bg-img" data-bg="banner3.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>About Project</h2>
+						</header>
+						<div class="content">
+							<p>Crime is rampant throughout society, especially in a growing city like Nashville, where thousands of incidents are reported every month. Researchers have tested varying different methodologies to help police departments effectively use their limited resources to deter crime more efficiently in their respective cities. Researchers used neural networks and machine learning to create hotspot predictions, an NxN area where crime is more likely to happen in the coming month. With an accurate hotspot prediction tool, police can turn their focus to these specific areas to reduce crime.</p>
+						</div>
+					</article>
+				</div>
+			</section>
 
-//on load end mark
-});
+		<!--  ---------------------------------------------Three--------------------------------------------- -->
+			<section id="three" class="wrapper post bg-img" data-bg="banner4.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>About Us</h2>
+						</header>
+						<div class="content">
+							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+						</div>
+					</article>
+				</div>
+			</section>
 
-//console.log(map.isSourceLoaded("grid"))
-</script>
+		
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-
-</body>
+	</body>
 </html>
-

@@ -12,12 +12,12 @@ function next30() {
 function customPrediction(){
 	
 	var data = document.getElementById("data").value;
-	var alogrithm = document.getElementById("alogrithm").value;
+	var algorithm = document.getElementById("algorithm").value;
 
 	$.post("index.php",
 	{
 	data: data
-	alogrithm: alogrithm
+	algorithm: algorithm
 	},
 
 	function(result)
