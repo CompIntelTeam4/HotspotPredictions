@@ -4,7 +4,7 @@ import json
 import pandas as pd
 
 #3445 grids total
-train = pd.read_csv('C:\\\\Users\\Lucian Murdock\\Desktop\\Computational_Intelligence\\Crime_Prediction\\Data\\Crime_Data\\Results\\KNNinitial2017Test.csv')
+train = pd.read_csv('C:\\\\xampp\\htdocs\\HotspotPredictions\\Data\\Crime_data\\Results\\Jan2019_MLP_wPredictPrev6Mon.csv')
 #print(train.head())
 with open(r'C:\xampp\htdocs\HotspotPredictions\CrimeWebsite\geojsonTest.json') as json_file:
     json_decoded = json.load(json_file)
@@ -22,5 +22,5 @@ for i in range(len(json_decoded['data']['features'])):
     json_decoded['data']['features'][i]['properties']['ActualHot'] = int(train['Hotspot'][i])
     json_decoded['data']['features'][i]['properties']['PredictHot'] = int(train['predictions'][i])
 
-with open("./CrimeWebsite/KNN_GEO.json", 'w') as json_file:
+with open("MLP_GEO_12M.json", 'w') as json_file:
     json.dump(json_decoded, json_file)

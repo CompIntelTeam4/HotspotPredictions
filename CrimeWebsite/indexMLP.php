@@ -1,13 +1,13 @@
 
 <?php 
-    $string = file_get_contents("testGEO.json");
+    $string = file_get_contents("MLP_GEO_12M.json");
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset='utf-8' />
-<title>Add multiple geometries from one GeoJSON source</title>
+<title>MLP</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
