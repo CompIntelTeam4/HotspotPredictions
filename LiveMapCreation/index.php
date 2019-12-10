@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<title>Add multiple geometries from one GeoJSON source</title>
+<title>Live Crime forcast for next 30 days</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
