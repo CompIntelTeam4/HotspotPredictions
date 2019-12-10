@@ -37,7 +37,7 @@ def createMap(dataset, model):
         json_decoded['data']['features'][i]['properties']['ActualHot'] = int(final_output['Hotspot'][i])
         json_decoded['data']['features'][i]['properties']['PredictHot'] = int(final_output['predictions'][i])
 
-    with open("./PastData/CRIME_GEO.json", 'w') as json_file:
+    with open("./HistoricalMapCreation/CRIME_GEO.json", 'w') as json_file:
         json.dump(json_decoded, json_file)
 
 
