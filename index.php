@@ -94,8 +94,8 @@ if(isset($_POST['customPredict'])) {
 										</select>
 										<select id="alogrithm" name="algorithm">
 											<option value="">- Choose Algorithm -</option>
-											<option value="Decision Tree">Decision Tree</option>
-											<option value="Backprogation">Backprogation</option>
+											<option value="DST_MODEL_JAN6MONTHS.sav">Decision Tree</option>
+											<option value="MLP_MODEL_JAN6MONTHS.sav">Backprogation</option>
 											<option value="KNN_MODEL.sav">K-nearest</option>								
 										</select>
 									</div>
