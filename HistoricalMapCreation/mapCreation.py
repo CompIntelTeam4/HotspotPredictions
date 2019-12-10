@@ -16,11 +16,11 @@ def createMap(dataset, model):
     Y_test = dataset.pop('Hotspot')
 
     model_filepath = "D:\\\\home\\site\\wwwroot\\trained_models\\" + model
-    decision_tree = pickle.load(open(model_filepath,'rb'))
+    model = pickle.load(open(model_filepath,'rb'))
 
-    dt_prediction = decision_tree.predict(dataset)
+    model_prediction = model.predict(dataset)
 
-    pred_series = pd.Series(dt_prediction, index=Y_test.index, name="predictions")
+    pred_series = pd.Series(model_prediction, index=Y_test.index, name="predictions")
 
     final_output = pd.concat([Y_test,pred_series],axis=1)
     final_output.insert(0,'Grid',range(1,1+len(final_output)))
