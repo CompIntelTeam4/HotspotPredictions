@@ -27,7 +27,7 @@ if(isset($_POST['customPredict'])) {
 		$dataset = $_POST['data'];
 		$algo = $_POST['algorithm'];
 
-		$python = shell_exec('"D:\Python34\python.exe" "D:\home\site\wwwroot\PastData\mapCreation.py" '. $dataset . ' ' . $algo . ' 2>&1');
+		$python = shell_exec('"D:\Python34\python.exe" "D:\home\site\wwwroot\HistoricalMapCreation\mapCreation.py" '. $dataset . ' ' . $algo . ' 2>&1');
 		$python_result = json_decode($python);
 
 		header('Location:HistoricalMapCreation');
