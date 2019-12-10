@@ -7,7 +7,7 @@
 
 if(isset($_POST['predict30Submit'])) {
 	echo "test";
-	header('Location:next30Days');
+	header('Location:LiveMapCreation');
 
 }
 
@@ -30,7 +30,7 @@ if(isset($_POST['customPredict'])) {
 		$python = shell_exec('"D:\Python34\python.exe" "D:\home\site\wwwroot\PastData\mapCreation.py" '. $dataset . ' ' . $algo . ' 2>&1');
 		$python_result = json_decode($python);
 
-		header('Location:LiveMapCreation');
+		header('Location:HistoricalMapCreation');
 
 		echo $python;
 		foreach ($python_result as $item) {
