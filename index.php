@@ -89,8 +89,8 @@ if(isset($_POST['customPredict'])) {
 										<select id="data" name="data">
 											<option value="">- Choose Data -</option>
 											<option value="predictJan2019_wCrimeTallysJan2018-Dec2018.csv">Predict January 2019</option>
-											<option value="twenty17">2017 data</option>
-											<option value="twenty16">2016 data</option>
+											<option value="predictFeb2019_wCrimeTallysFeb2018-Jan2019.csv">2017 data</option>
+											<option value="predictMar2019_wCrimeTallysMar2018-Feb2019.csv">2016 data</option>
 										</select>
 										<select id="alogrithm" name="algorithm">
 											<option value="">- Choose Algorithm -</option>
