@@ -160,7 +160,7 @@ for i in range(3):
 
 
 import pickle
-pickle.dump(KNN,open("D:\\\\home\\site\\wwwroot\\trained_models\\DST_MODEL_JAN6MONTHS.sav",'wb'))
+pickle.dump(decision_tree,open("D:\\\\home\\site\\wwwroot\\trained_models\\DST_MODEL_JAN6MONTHS.sav",'wb'))
 
 print("Average accuracy: ", totalScore/3)
 print("Average FP", totalFP/3)

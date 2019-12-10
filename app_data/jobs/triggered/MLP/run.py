@@ -109,7 +109,7 @@ final_output.insert(0,'Grid',range(1,1+len(final_output)))
 
 
 import pickle
-pickle.dump(KNN,open("D:\\\\home\\site\\wwwroot\\trained_models\\MLP_MODEL_JAN6MONTHS.sav",'wb'))
+pickle.dump(MLP_prediction,open("D:\\\\home\\site\\wwwroot\\trained_models\\MLP_MODEL_JAN6MONTHS.sav",'wb'))
 
 
 print("--final iteration--")
