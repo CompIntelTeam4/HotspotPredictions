@@ -73,30 +73,34 @@ if(isset($_POST['customPredict'])) {
 				<div class="inner">
 					<article class="box">
 						<header>
-							<h2>Create Map</h2>
+							<h2>View Live Predictions</h2>
 						</header>
 						<div class="field half first">
                             <!-- <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"> -->
                             <form method="POST" action="">
-                                <button type="submit" name="predict30Submit"> Predict next 30 days</button>
+                                <button type="submit" name="predict30Submit"> Predict next 30 days of crime</button>
                             </form>
 						</div>
 						
+						<header>
+							<h2> Customize Map w/ Historical Data </h2>
+						</header>
+
 						<form  method="POST" id="myForm">				
-							<p>Customize your prediction</p>
+							<p>Select Data and algorithm</p>
 									<div class="dropdown">
 
 										<select id="data" name="data">
 											<option value="">- Choose Data -</option>
 											<option value="predictJan2019_wCrimeTallysJan2018-Dec2018.csv">Predict January 2019</option>
-											<option value="predictFeb2019_wCrimeTallysFeb2018-Jan2019.csv">2017 data</option>
-											<option value="predictMar2019_wCrimeTallysMar2018-Feb2019.csv">2016 data</option>
+											<option value="predictFeb2019_wCrimeTallysFeb2018-Jan2019.csv">Predict Feb 2019</option>
+											<option value="predictMar2019_wCrimeTallysMar2018-Feb2019.csv">Predict Mar 2019</option>
 										</select>
 										<select id="alogrithm" name="algorithm">
 											<option value="">- Choose Algorithm -</option>
 											<option value="DST_MODEL_JAN6MONTHS.sav">Decision Tree</option>
-											<option value="MLP_MODEL_JAN6MONTHS.sav">Backprogation</option>
-											<option value="KNN_MODEL.sav">K-nearest</option>								
+											<option value="MLP_MODEL_JAN6MONTHS.sav">Multilayer Perceptron</option>
+											<option value="KNN_MODEL.sav">K-Nearest Neighbors</option>								
 										</select>
 									</div>
 								<br>
@@ -117,7 +121,11 @@ if(isset($_POST['customPredict'])) {
 							<h2>About Project</h2>
 						</header>
 						<div class="content">
-							<p>Crime is rampant throughout society, especially in a growing city like Nashville, where thousands of incidents are reported every month. Researchers have tested varying different methodologies to help police departments effectively use their limited resources to deter crime more efficiently in their respective cities. Researchers used neural networks and machine learning to create hotspot predictions, an NxN area where crime is more likely to happen in the coming month. With an accurate hotspot prediction tool, police can turn their focus to these specific areas to reduce crime.</p>
+							<p>Crime is rampant throughout society, especially in a growing city like Nashville, where thousands of incidents are reported every month.
+								 Researchers have tested varying different methodologies to help police departments effectively use their limited resources to deter crime more efficiently in their respective cities.
+								 The goal of this project was to create a tool to build off research done to help police departments effectively prioritize resources. We took thousands of previous assault crime incidents, ran
+								 them through various machine learning models, and then built a live web map to display the results.
+								 A block is considered 'Hot' if an assault crime occurs in the block within 30 days.</p>
 						</div>
 					</article>
 				</div>
@@ -131,7 +139,8 @@ if(isset($_POST['customPredict'])) {
 							<h2>About Us</h2>
 						</header>
 						<div class="content">
-							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+							<p>This project was built during Dr. Rahimi's computational intelligence class fall semester 2019 at Mississippi State University. Lucian, William, and Tim are undergraduate students majoring in computer science.
+							</p>
 						</div>
 					</article>
 				</div>
